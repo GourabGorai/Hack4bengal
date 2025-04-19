@@ -459,10 +459,10 @@ def index():
             session['investment_decision'] = investment_decision
             session['predicted_prices'] = predicted_prices
             session['actual_prices'] = actual_prices
-            session['stock_news'] = stock_news
+            session['stock_news'] = None
             session['future_prediction'] = future_prediction
             session['accuracy_score'] = accuracy_score
-            session['plot_url'] = plot_filename
+            session['plot_url'] = None
 
             print("\nStock News Headlines:")
             for i, news in enumerate(stock_news, 1):
