@@ -95,11 +95,11 @@ main {
 }
 
 .typing-loop {
-    width: 52ch; /* Adjust based on your text length */
+    width: 70ch; /* Count characters including spaces & emoji */
     overflow: hidden;
     white-space: nowrap;
     border-right: 3px solid #fff;
-    animation: typing 6s steps(52, end) 1s infinite alternate, blink 0.7s step-end infinite;
+    animation: typing 5s steps(70, end) 1s infinite alternate, blink 0.7s step-end infinite;
     color: white;
     font-size: 18px;
     margin-top: 10px;
@@ -107,7 +107,7 @@ main {
   
   @keyframes typing {
     from { width: 0; }
-    to { width: 52ch; } /* Same as the width above */
+    to { width: 66ch; } /* Same as the width above */
   }
   
   @keyframes blink {
