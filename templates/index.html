@@ -8,97 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&display=swap" rel="stylesheet">
-  <style>
-    .error-message {
-      color: #E13622;
-      background-color: #fee2e2;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      display: none;
-    }
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .result-item {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .result-label {
-      font-size: 1rem;
-      color: #4b5563;
-    }
-    .result-value {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #E13622;
-    }
-    .chatbot-form {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    .chatbot-input {
-      flex: 1;
-      padding: 0.5rem;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.375rem;
-      font-size: 1rem;
-    }
-    .chatbot-response {
-      background-color: #f3f4f6;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      margin-top: 1rem;
-      {% if not chatbot_response %}display: none;{% endif %}
-    }
-    .news-list {
-      margin-top: 1rem;
-      list-style: none;
-      padding: 0;
-      width: 100%;
-    }
-    .news-list li {
-      padding: 0.75rem;
-      border-radius: 0.375rem;
-      margin-bottom: 0.5rem;
-      background-color: #f3f4f6;
-      transition: background-color 0.2s;
-      width: 100%;
-    }
-    .news-list li:hover {
-      background-color: #e5e7eb;
-    }
-    .news {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .result-form {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .result-form div {
-      display: flex;
-      align-items: center;
-    }
-    .result-form label {
-      min-width: 150px;
-      font-weight: bold;
-    }
-    .result-form input {
-      flex: 1;
-      padding: 0.5rem;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.375rem;
-    }
-  </style>
 </head>
 <body>
   <header class="header">
@@ -106,7 +15,7 @@
       <a href="/">HOME</a>
       <a href="static/about.html">ABOUT</a>
     </div>
-    <h2 class="header_title">STOCK PREDICTION</h2>
+    <h2 class="header_title">ClarityTrade</h2>
     <div>
       <a href="#prediction-form">RUN</a>
       <a href="#results">RESULT</a>
@@ -127,8 +36,8 @@
         Your browser does not support the video tag.
       </video>
       <div class="overlay">
-        <h1>PRIMARY TAG LINE</h1>
-        <h3>SUB TAG LINE</h3>
+        <h1>From Data to Decisions - Your Complete Investment Analysis Platform</h1>
+        <h3>Where data science meets investment strategy for better financial decisions</h3>
       </div>
     </section>
 
