@@ -10,3 +10,4 @@ httpx>=0.27.3
 numpy==2.1.2
 psycopg2-binary==2.9.10
 Werkzeug==3.0.4
+python-dotenv
