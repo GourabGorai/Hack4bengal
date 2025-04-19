@@ -343,10 +343,12 @@ input[disabled] {
 
 /* Chatbot Section */
 .chatbot-input {
+    width: 60%; 
     padding: 0.75rem;
     border: 2px solid #A9DDF2;
     border-radius: 8px;
-    font-size: 0.9rem;
+    box-sizing: border-box;
+    font-size: 16px;
     background-color: #fff;
     color: #3A546D;
     outline: none;
