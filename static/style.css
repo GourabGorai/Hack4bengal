@@ -65,7 +65,7 @@ main {
     position: relative;
     width: 80%;
     height: 100%;
-    background: #061B3A;
+    background: #0530709c;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,7 +85,7 @@ main {
 }
 
 .overlay h3 {
-    color: rgb(137, 128, 190);
+    color: rgb(252, 252, 252);
     font-size: 1.5em;
     justify-content: center; /* vertical centering */
     align-items: center;     /* horizontal centering */
@@ -94,6 +94,27 @@ main {
   font-weight: 700;
 }
 
+.typing-loop {
+    width: 52ch; /* Adjust based on your text length */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid #fff;
+    animation: typing 6s steps(52, end) 1s infinite alternate, blink 0.7s step-end infinite;
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 52ch; } /* Same as the width above */
+  }
+  
+  @keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #fff; }
+  }
+  
 
 /* Input Section */
 .input {
