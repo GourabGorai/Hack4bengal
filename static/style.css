@@ -84,7 +84,7 @@ main {
     font-size: 2em;
 }
 
-/* Input */
+/* Input Section */
 .input {
     display: flex;
     flex-direction: row;
@@ -106,6 +106,38 @@ main {
     flex-direction: column;
     color: white;
     gap: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.input form div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input form label {
+    color: white;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+/* Dropdown Styles */
+select {
+    padding: 0.75rem;
+    border: 2px solid #A9DDF2;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background-color: #fff;
+    color: #3A546D;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 200px;
+}
+
+select:focus {
+    border-color: #E6F4B1;
+    box-shadow: 0 0 5px rgba(230, 244, 177, 0.5);
 }
 
 /* Textbox Styles */
@@ -159,8 +191,8 @@ input[disabled] {
 
 /* Specific Styles for Chatbot 'Ask' Button */
 #chatbotForm .button {
-    padding: 1rem 3rem; /* Increased horizontal padding from 2rem to 3rem for wider button */
-    font-size: 1.2rem; /* Kept text size larger */
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
 }
 
 /* Result */
@@ -251,6 +283,7 @@ input[disabled] {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    height: 2000px;
 }
 
 .news-list {
@@ -258,7 +291,7 @@ input[disabled] {
     list-style: none;
     padding: 0;
     width: 100%;
-    max-height: 200px;
+    max-height: 500px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #e5e7eb #f3f4f6;
@@ -322,4 +355,103 @@ footer {
     color: white;
     background-color: #3A4D5C;
     padding: 2%;
+}
+
+/* Error Message */
+.error-message {
+    color: #E13622;
+    background-color: #fee2e2;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .input {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .input .text {
+        text-align: center;
+    }
+    
+    .input form div {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    select {
+        width: 100%;
+    }
+    
+    .result {
+        flex-direction: column;
+    }
+    
+    .record {
+        flex-direction: column;
+        padding: 30px;
+    }
+}
+
+/* Results Grid */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.result-label {
+    font-size: 1rem;
+    color: #4b5563;
+}
+
+.result-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #E13622;
+}
+
+/* Chatbot Form */
+.chatbot-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.chatbot-response {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    display: none;
+}
+
+/* Result Form */
+.result-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.result-form div {
+    display: flex;
+    align-items: center;
+}
+
+.result-form label {
+    min-width: 150px;
+    font-weight: bold;
 }
