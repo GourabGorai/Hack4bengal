@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prediction</title>
+</head>
+<body>
+<h1>Stock Data</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Company Name (Symbol)</th>
+        <th>Yesterday's Stock Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for stock in stock_data %}
+    <tr>
+        <td>{{ stock.company }}</td>
+        <td>{{ stock.yesterday_stock_value }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div class="form-container">
+    <h2>Stock Prediction</h2>
+    <form method="POST">
+        <label for="symbol">Stock Symbol:</label>
+        <input type="text" id="symbol" name="symbol" placeholder="Enter stock symbol (e.g., AAPL)" required>
+
+        <label for="future_date">Future Date:</label>
+        <input type="date" id="future_date" name="future_date" required>
+
+        <input type="submit" value="Predict">
+    </form>
+</div>
+
+{% if error_message %}
+<div class="error-message">{{ error_message }}</div>
+{% endif %}
+
+{% if predicted_prices and actual_prices %}
+<div class="plot-container">
+    <h2>Stock Prices: Predicted vs Actual</h2>
+    <iframe src="{{ plot_url }}" width="100%" height="500px"></iframe>
+</div>
+
+<div>
+    <h2>Prediction Details</h2>
+    <p><strong>Future Prediction:</strong> {{ future_prediction }}</p>
+    <p><strong>Accuracy Score:</strong> {{ accuracy_score }}%</p>
+</div>
+
+<div class="investment-decision">
+    <h2>Investment Decision</h2>
+    <p>{{ investment_decision }}</p>
+</div>
+{% endif %}
+
+{% if stock_news %}
+<div class="news-container">
+    <h2>Stock News</h2>
+    <ul>
+        {% for news in stock_news %}
+        <li>{{ news }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+</body>
+</html>

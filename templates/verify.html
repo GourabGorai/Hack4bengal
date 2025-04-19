@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify</title>
+    <style>
+        html {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(145deg, blue, black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .verify-box {
+            width: 400px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .verify-box h2 {
+            color: #fff;
+        }
+        .verify-box h3 {
+            color: #fff;
+        }
+        .verify-box .user-box {
+            position: relative;
+        }
+        .verify-box .user-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+            margin-bottom: 30px;
+        }
+        .verify-box .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .verify-box .user-box input:focus ~ label,
+        .verify-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #3f03f4;
+            font-size: 12px;
+        }
+        .verify-box input[type="submit"] {
+            background: #3209eb;
+            border: none;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.5s;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #3704b6, 0 0 25px #0611a0;
+        }
+        .verify-box input[type="submit"]:hover {
+            box-shadow: 0 0 50px #4303ba, 0 0 100px #2a05cf;
+        }
+    </style>
+</head>
+<body>
+    <div class="verify-box">
+        <h2>Verify Your Email</h2>
+        <h3>NONE OF THE LOGIN DEATILS WILL BE STORED FOR NOW</h3>
+        <form method="POST">
+            <div class="user-box">
+                <input type="text" id="user_input_code" name="user_input_code" required>
+                <label for="user_input_code">Verification Code</label>
+            </div>
+            <input type="submit" value="Verify">
+        </form>
+    </div>
+</body>
+</html>

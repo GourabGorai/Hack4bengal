@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Prediction</title>
+  <link href="static/style.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&display=swap" rel="stylesheet">
+  <style>
+    /* Additional styles for functionality */
+    .error-message {
+      color: #E13622;
+      background-color: #fee2e2;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .result-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .result-label {
+      font-size: 1rem;
+      color: #4b5563;
+    }
+
+    .result-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #E13622;
+    }
+
+    .chatbot-form {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .chatbot-input {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      font-size: 1rem;
+    }
+
+    .chatbot-response {
+      background-color: #f3f4f6;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    /* Updated News List Styles */
+    .news-list {
+      margin-top: 1rem;
+      list-style: none;
+      padding: 0;
+      width: 100%; /* Make the list take full width */
+    }
+
+    .news-list li {
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      margin-bottom: 0.5rem;
+      background-color: #f3f4f6;
+      transition: background-color 0.2s;
+      width: 100%; /* Make each list item take full width */
+    }
+
+    .news-list li:hover {
+      background-color: #e5e7eb;
+    }
+
+    /* Adjust the width of the news container */
+    .news {
+      width: 100%; /* Make the news section take full width */
+      max-width: 1200px; /* Optional: Set a max-width for better readability */
+      margin: 0 auto; /* Center the news section */
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <a href="/">HOME</a>
+      <a href="static/about.html">ABOUT</a>
+    </div>
+    <h2 class="header_title">STOCK PREDICTION</h2>
+    <div>
+      <a href="#prediction-form">RUN</a>
+      <a href="#results">RESULT</a>
+      <a href="#news">RECORD</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message">
+      {% if error_message %}
+        {{ error_message }}
+      {% endif %}
+    </div>
+
+    <!-- Hero Section -->
+    <section class="Hero">
+      <video autoplay muted loop>
+        <source src="static/background-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay">
+        <h1>PRIMARY TAG LINE</h1>
+        <h3>SUB TAG LINE</h3>
+      </div>
+    </section>
+
+    <!-- Input Section -->
+    <section class="input" id="prediction-form">
+      <div class="text">
+        <h3>TRY IT OUT</h3>
+        <h3>YOURSELF</h3>
+      </div>
+      <div>
+        <form class="prediction-form" method="POST" action="/">
+          <div>
+            <label for="symbol">SYMBOL:&nbsp</label>
+            <input type="text" id="symbol" name="symbol" placeholder="Enter stock symbol" required>
+          </div>
+          <div>
+            <label for="date">DATE:&nbsp</label>
+            <input type="date" id="date" name="future_date" required>
+          </div>
+          <div>
+            <button type="submit" class="button">Run</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="result" id="results">
+      <div>
+        {% if plot_url %}
+          <iframe src="{{ plot_url }}" width="100%" height="500px" frameborder="0"></iframe>
+        {% else %}
+          <p>No plot available. Please make a prediction to view the plot.</p>
+        {% endif %}
+      </div>
+      <form>
+        <div>
+          <label for="last_price">LAST KNOWN PRICE:&nbsp</label>
+          <input type="text" id="last_price" value="{{ actual_prices[-1] if actual_prices else 'N/A' }}" disabled>
+        </div>
+        <div>
+          <label for="pred_price">PREDICTED PRICE:&nbsp</label>
+          <input type="text" id="pred_price" value="{{ future_prediction if future_prediction else 'N/A' }}" disabled>
+        </div>
+        <div>
+          <label for="pred_date">PREDICTION DATE:&nbsp</label>
+          <input type="text" id="pred_date" value="{{ date if date else 'N/A' }}" disabled>
+        </div>
+        <div>
+          <label for="acc_rate">ACCURACY RATE:&nbsp</label>
+          <input type="text" id="acc_rate" value="{{ accuracy_score }}%" disabled>
+        </div>
+      </form>
+    </section>
+
+    <!-- Investment Decision & News Section -->
+    <section class="record" id="news">
+      <div class="decision">
+        <h1>INVESTMENT DECISION</h1>
+        <p>{{ investment_decision|safe if investment_decision else 'No decision available.' }}</p>
+      </div>
+      <div class="news">
+        <h1>RELEVANT NEWS</h1>
+        <ul class="news-list">
+          {% if stock_news %}
+            {% for news in stock_news %}
+              <li>{{ news }}</li>
+            {% endfor %}
+          {% else %}
+            <li>No news available.</li>
+          {% endif %}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section class="chatbot-section">
+      <h2>Ask Chatbot</h2>
+      <form id="chatbotForm" class="chatbot-form" method="GET" action="/">
+        <input 
+          type="text" 
+          id="chatbotInput" 
+          name="user_query"
+          class="chatbot-input"
+          placeholder="Ask about the investment decision..."
+          required
+        >
+        <button type="submit" class="button">Ask</button>
+      </form>
+      {% if chatbot_response %}
+        <div class="chatbot-response">{{ chatbot_response|safe }}</div>
+      {% endif %}
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>© 2024 Stock Prediction. All rights reserved.</span>
+  </footer>
+
+  <script>
+    // Form submission handling
+    document.querySelector('.prediction-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const symbol = document.getElementById('symbol').value;
+      const date = document.getElementById('date').value;
+      
+      if (!symbol || !date) {
+        showError('Please fill in all fields');
+        return;
+      }
+
+      // Submit the form
+      this.submit();
+    });
+
+    // Error handling
+    function showError(message) {
+      const errorDiv = document.getElementById('errorMessage');
+      errorDiv.textContent = message;
+      errorDiv.style.display = 'block';
+    }
+
+    function hideError() {
+      document.getElementById('errorMessage').style.display = 'none';
+    }
+
+    // Chatbot form handling
+    document.getElementById('chatbotForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = document.getElementById('chatbotInput').value;
+      
+      if (!query) return;
+
+      // Submit the form
+      this.submit();
+    });
+
+    // Simulate loading some news
+    function loadNews() {
+      const newsList = document.getElementById('newsList');
+      news.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        newsList.appendChild(li);
+      });
+    }
+
+    // Add animation to cards on page load and load initial data
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.animationDelay = ${index * 0.1}s;
+      });
+
+      loadNews();
+    });
+  </script>
+</body>
+</html>
