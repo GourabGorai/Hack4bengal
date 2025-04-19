@@ -76,13 +76,24 @@ main {
 
 .overlay h1 {
     color: #E6F4B1;
-    font-size: 3em;
+    font-size: 2.5em;
+    justify-content: center; /* vertical centering */
+    align-items: center;     /* horizontal centering */
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
 }
 
 .overlay h3 {
-    color: white;
-    font-size: 2em;
+    color: rgb(137, 128, 190);
+    font-size: 1.5em;
+    justify-content: center; /* vertical centering */
+    align-items: center;     /* horizontal centering */
+    text-align: center;
+    font-family: 'Kaushan Script', cursive;
+  font-weight: 700;
 }
+
 
 /* Input Section */
 .input {
