@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stock Prediction</title>
+  <title>ClarityTrade</title>
+  <link rel="icon" type="image/png" href="static/favicon.png">
   <link href="static/style.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,9 +37,9 @@
         Your browser does not support the video tag.
       </video>
       <div class="overlay">
-        <h1>FROM DATA TO DECISION </h1>
-        <h1>YOUR COMPLETE INVESTMENT ANALYSIS PLATFORM </h1>
-        <h3>{ Where data science meets investment strategy for better financial decisions }</h3>
+        <h1>FROM DATA TO DECISION</h1>
+        <h1>YOUR COMPLETE INVESTMENT ANALYSIS PLATFORM</h1>
+        <h3> Where data science meets investment strategy for better financial decisions 📈</h3>
       </div>
     </section>
 
@@ -133,30 +134,31 @@
       </div>
     </section>
 
-    <!-- Chatbot Section -->
-    <section class="chatbot-section">
-      <h2>Ask Chatbot</h2>
-      <form id="chatbotForm" class="chatbot-form" method="GET" action="/">
-        <input 
-          type="text" 
-          id="chatbotInput" 
-          name="user_query"
-          class="chatbot-input"
-          placeholder="Ask about the investment decision..."
-          required
-        >
-        <button type="submit" class="button">Ask</button>
-      </form>
-      <div id="chatbotResponse" class="chatbot-response">
-        {% if chatbot_response %}
-          {{ chatbot_response|safe }}
-        {% endif %}
-      </div>
-    </section>
+  <!-- Chatbot Section -->
+  <section class="chatbot-section">
+  <h2>Ask Chatbot</h2>
+  <form id="chatbotForm" class="chatbot-form" method="GET" action="/">
+    <input 
+      type="text" 
+      id="chatbotInput" 
+      name="user_query"
+      class="chatbot-input"
+      placeholder="Ask about the investment decision..."
+      required
+      style="width: 60%; padding: 10px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;"
+    >
+    <button type="submit" class="button" style="padding: 10px 20px; margin-left: 10px;">Ask</button>
+  </form>
+  <div id="chatbotResponse" class="chatbot-response">
+    {% if chatbot_response %}
+      {{ chatbot_response|safe }}
+    {% endif %}
+  </div>
+</section>
   </main>
 
   <footer class="footer">
-    <span>© 2025 Stock Prediction. All rights reserved.</span>
+    <span>©2025 ClarityTrade. All rights reserved.</span>
   </footer>
 
   <script>
