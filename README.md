@@ -108,23 +108,4 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Screenshots
-
-![Dashboard Screenshot](static/screenshot1.png)
-![Prediction Results](static/screenshot2.png)
-```
-
-Note: You should add actual screenshots to the `static/` folder and update the screenshot paths in the README. Also, make sure to create a `requirements.txt` file with all the Python dependencies if you haven't already.
-
-The README includes all the essential sections that GitHub users look for:
-- Project description
-- Features
-- Technologies
-- Installation instructions
-- Usage guide
-- Project structure
-- API requirements
-- Contribution guidelines
-- License information
-
 
