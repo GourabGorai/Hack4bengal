@@ -9,6 +9,8 @@
 
 ClarityTrade is a cutting-edge 💻, data-driven 📊 investment analysis platform that combines 🤖 machine learning predictions with real-time market news 📰 to provide actionable investment insights.  
 
+**Have a try :- https://obnoxious-erna-bfdfdgd-fc37455c.koyeb.app/**
+
 ---
 
 ## 🌟 Key Features  
