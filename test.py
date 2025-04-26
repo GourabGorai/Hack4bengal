@@ -54,7 +54,7 @@ def fetch_current_price(stock_symbol, alpha_vantage_api_key):
         return None
 
 # Function to use Gemini's generative model for suggestion
-def get_financial_suggestion(predicted_price, current_price, stock_news):
+def get_financial_suggestion(predicted_price, current_price, stock_news, accuracy_score):
     # Configure and create the generative model
     genai.configure(api_key="AIzaSyDYTE6N19xUpjUanmKtbR4ymkmOXcxG8OA")
     model = genai.GenerativeModel("gemini-1.5-flash")
@@ -64,12 +64,12 @@ def get_financial_suggestion(predicted_price, current_price, stock_news):
         "predicted_price": predicted_price,
         "current_price": current_price,
         "stock_news": stock_news,
-        "accuracy of prediction": 99.2
+        "accuracy_score": accuracy_score
     }
 
     # Generate text suggestion based on the payload
-    response = model.generate_content(f"Provide me your financial suggestion according to {payload}")
-    return response.text  # Return the generated suggestion
+    response = model.generate_content(f"Provide me your financial Decision according to {payload}")
+    return response.text 
 
 # Function to interact with the Gemini API as a chatbot
 def chat_with_gemini(user_question):
@@ -85,8 +85,7 @@ def chat_with_gemini(user_question):
     except Exception as e:
         return f"Error: {str(e)}"
 
-# Main function to fetch data and make a suggestion
-def make_investment_decision(predicted_price, stock_symbol, finnhub_api_key):
+def make_investment_decision(predicted_price, stock_symbol, finnhub_api_key, accuracy_score):
     # Fetch current stock price
     current_price = fetch_current_price(stock_symbol, 'LZIWKUHDC0XBETMU')
     if current_price is None:
@@ -103,9 +102,8 @@ def make_investment_decision(predicted_price, stock_symbol, finnhub_api_key):
         print(f"{i}. {news}")
 
     # Get financial suggestion using Gemini's generative model
-    suggestion = get_financial_suggestion(predicted_price, current_price, stock_news)
+    suggestion = get_financial_suggestion(predicted_price, current_price, stock_news, accuracy_score)
     data1 = f"\nFinancial Suggestion: {suggestion}"
-    print(f"\nFinancial Suggestion: {suggestion}")
 
     # Disclaimer
     print("Disclaimer: This is a suggestion based on the provided information and should not be considered financial advice. Please consult with a financial professional before making any investment decisions.")
