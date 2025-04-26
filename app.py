@@ -39,9 +39,9 @@ EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
 DB_URL = os.getenv('DB_URL')
 
 # Threading helper functions
-def fetch_investment_decision(result_container, error_container, future_prediction, symbol, api_key):
+def fetch_investment_decision(result_container, error_container, future_prediction, symbol, api_key, accuracy_score):
     try:
-        decision = make_investment_decision(future_prediction, symbol, api_key)
+        decision = make_investment_decision(future_prediction, symbol, api_key, accuracy_score)
         formatted_decision = format_investment_decision(decision)
         result_container['decision'] = formatted_decision
     except Exception as e:
@@ -432,7 +432,7 @@ def index():
 
             decision_thread = threading.Thread(
                 target=fetch_investment_decision,
-                args=(decision_result, errors, future_prediction, symbol, GOOGLE_NEWS_API_KEY)
+                args=(decision_result, errors, future_prediction, symbol, GOOGLE_NEWS_API_KEY, accuracy_score)
             )
             news_thread = threading.Thread(
                 target=fetch_stock_news_parallel,
