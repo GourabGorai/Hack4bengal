@@ -5,7 +5,7 @@
 
 # 🔍 ClarityTrade - Stock Prediction & Investment Analysis Platform  
 
-![ClarityTrade Logo](static/favicon.png)  
+![ClarityTrade Website](https://github.com/GourabGorai/Hack4bengal/blob/main/static/Screenshot%202025-04-27%20104306.png)  
 
 ClarityTrade is a cutting-edge 💻, data-driven 📊 investment analysis platform that combines 🤖 machine learning predictions with real-time market news 📰 to provide actionable investment insights.  
 
