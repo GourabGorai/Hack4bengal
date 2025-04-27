@@ -39,6 +39,7 @@ ClarityTrade is a cutting-edge 💻, data-driven 📊 investment analysis platfo
 | **✉️ Email**          | SMTP with SSL 🔐                          |
 | **🤖 AI**             | Gemini integration 🧠                     |
 
+![demo](https://github.com/GourabGorai/Hack4bengal/blob/main/static/graph.jpg)
 ---
 
 ## 🛠️ Installation Guide  
