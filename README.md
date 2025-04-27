@@ -120,6 +120,9 @@ ClarityTrade/
 | Holiday API      | Market calendar 🗓️      |
 
 ---
+## 👨‍💻Meet Our Team:
+![team](https://github.com/GourabGorai/Hack4bengal/blob/main/static/hack4bengal%20CodeFusion%20Innovators%20.png)
+---
 
 ## 🤝 Contributing  
 
